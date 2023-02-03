@@ -10,16 +10,6 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      company.associate = function(models) {
-        company.hasMany(models.tags, {
-          foreignKey: 'company_id',
-        });
-      };
-      company.associate = function(models){
-        company.hasMany(models.performance,{
-          foreignKey: 'company_id',
-        });
-      };
       // define association here
     }
   }

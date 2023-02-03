@@ -14,5 +14,16 @@ const addCompany = async (req, res) => {
 
   
 };
-
-module.exports = {addCompany};
+const getPerformance = async (req, res) => {
+  try {
+    const companyPerformance = await companyService.getPerformance();
+    res.status(200).json({
+      data: companyPerformance
+    });
+  } catch (e) {
+    res.status(400).json({
+      message: e.message
+    });
+  }
+};
+module.exports = {addCompany,getPerformance};
