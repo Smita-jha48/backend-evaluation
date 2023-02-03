@@ -39,5 +39,13 @@ Object.keys(db).forEach(modelName => {
 
 db.sequelize = sequelize;
 db.Sequelize = Sequelize;
+const company = require('./company')(sequelize, Sequelize);
+db.company = company;
+
+const performance = require('./performance')(sequelize, Sequelize);
+db.performance = performance;
+
+const tags = require('./tags')(sequelize, Sequelize);
+db.tags = tags;
 
 module.exports = db;
