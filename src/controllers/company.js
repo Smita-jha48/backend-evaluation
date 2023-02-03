@@ -5,7 +5,6 @@ const addCompany = async (req, res) => {
     
   try {
     const company = await companyService.addCompany(req.body.urlLink);
-    console.log(company);
     res.status(201).json(company);
   
   } catch (err) {

@@ -21,7 +21,6 @@ const addCompany =  async(urlLink) => {
           ceo: companyDetailsById.data.ceo,
         };
         await db.company.create(company);
-        //console.log(companyDetailsById.data);
         
 
         const companyDetailsBySector = await axios.get('http://54.167.46.10/sector', { params: { name: sector } });
@@ -30,7 +29,8 @@ const addCompany =  async(urlLink) => {
           const score= ((Number(Data.performanceIndex[0].value) * 10) + (Number(Data.performanceIndex[1].value) / 10000) + (Number(Data.performanceIndex[2].value) * 10) + Number(Data.performanceIndex[3].value)) / 4;
 
         });
-        
+        return db.company;
+
         
 
       }
