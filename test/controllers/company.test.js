@@ -20,5 +20,18 @@ describe('Todo Controller', () => {
       data: { id: 1 }
     });
   });
-  
+  it('should return error when save details to company is called', async ()=>{
+    jest.spyOn(companyService, 'addCompany').mockRejectedValue(new Error('Internal Server Error'));
+    const mockReq = {};
+    const mockRes = {
+      status: jest.fn().mockReturnThis(),
+      json: jest.fn(),
+    };
+    await companyController.addCompany(mockReq, mockRes);
+    expect(mockRes.status).toBeCalledWith(500);
+    expect(mockRes.json).toBeCalledWith({
+      
+      error: 'Something went wrong'
+    });
+  });
 });
